@@ -1,0 +1,40 @@
+<!-- <main>
+  <form>
+    <textarea rows="4" cols="10" [(ngModel)]="postTextArea" name="postTextArea"></textarea>
+    <button type="button" (click)="submit()">Submit</button>
+  </form>
+</main> -->
+<div class="alert alert-danger" *ngIf="enable" role="alert">
+   Please enter the post detail to submit
+  </div>
+
+<div class="container">
+  <section>
+      <ul class="row postlist">
+          <li class="col-md-6 offset-md-3">
+              <div class="card">
+                  <div class="card-body">
+                      <form class="form-block">
+                          <div class="row">
+                              <div class="col-12 text-center">
+                                  <h3 class="m-0 mb-4">Create Post</h3>
+                              </div>
+                              <div class="col-12">
+                                  <div class="form-group">
+                                      <input class="form-input" type="text" [(ngModel)]="postTitle" name="postTitle" placeholder="Your name">
+                                  </div>
+                              </div>
+                              <div class="col-12">
+                                  <div class="form-group">
+                                      <textarea class="form-input" required=""  [(ngModel)]="postTextArea" name="postTextArea" placeholder="Your text"></textarea>
+                                  </div>
+                              </div>
+                          </div>
+                          <a class="btn float-right" (click)="submit()">Create Post</a>
+                      </form>
+                  </div>
+              </div>
+          </li>
+      </ul>
+  </section>
+</div>

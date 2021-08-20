@@ -1,0 +1,47 @@
+<!-- <main>
+  <div>
+    <button type="button" (click)="createPost()">Add Post</button>
+  </div>
+  <div *ngFor="let post of postsService.state$ | async">
+    {{post.data}}
+  </div>
+</main> -->
+
+<div class="container">
+  <div class="position-topbtn mt-4">
+      <div class="row">
+          <div class="col-sm"  (click) = enableAuth()> 
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" [(ngModel)] = "enable">
+            <label class="form-check-label" for="flexCheckDefault">
+              Is Auth enabled
+            </label>
+          </div>
+          <div class="col-sm text-right">
+              <a class="btn addbtn" (click)="createPost()"><i class="far fa-plus-circle mr-2"></i> Create</a>
+          </div>
+      </div> 
+  </div>
+  <p *ngIf = "!postsService.state$['_events'].length" class="text-center center">Create Post.</p>
+  <section *ngIf = "postsService.state$['_events']">
+      <ul class="row postlist" >
+          <li class="col-md-8 offset-md-2">
+              <div class="card"  *ngFor="let post of postsService.state$ | async ; let i = index">
+                  <div class="card-body">
+                      <a  class="btn del" (click) = "postsService.deletePost(post)"><i class="far fa-trash"></i></a>
+                      <h3>{{post.postTitle}}</h3>
+                      <a class="comment" (click) = "toggleAccordian(i)"> 
+                          <i class="far fa-comment-dots"></i> <span class="middotDivider"></span> show comments
+                      </a>
+                      <p>{{post.texttrea}}</p>
+                  </div>
+                  <!-- comments -->
+                  <div *ngIf="post.isActive" >
+                  <app-comments [postComment]="postsService.state$['_events'][0][i].comments" (countComments)="recieveCount($event)"></app-comments>
+                  <!-- iinput comments -->
+                  <app-commentbox (usercomment)="receiveComment($event,i)"></app-commentbox>
+                </div>
+              </div>
+          </li>
+      </ul>
+  </section>
+</div>
